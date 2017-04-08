@@ -36,29 +36,35 @@ The goals / steps of this project are the following:
 
 ####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
 
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+You're reading it! and here is a link to my [project code](https://github.com/mjmiranda-dhi/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
 ###Data Set Summary & Exploration
 
-####1. Provide a basic summary of the data set and identify where in your code the summary was done. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+####1. Provide a basic summary of the data set and identify where in your code the summary was done. 
 
-The code for this step is contained in the second code cell of the IPython notebook.  
+The code for this step is contained in the second cell of the IPython notebook.
 
-I used the pandas library to calculate summary statistics of the traffic
-signs data set:
+I used the pandas library as well as plain python to calculate summary statistics of the traffic signs data set:
 
-* The size of training set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
+* The size of training set is 34799
+* The size of the validation set is 4410
+* The size of test set is 12630
+* The shape of a traffic sign image is (32, 32, 3)
+* The number of unique classes/labels in the data set is 43
 
 ####2. Include an exploratory visualization of the dataset and identify where the code is in your code file.
 
-The code for this step is contained in the third code cell of the IPython notebook.  
+The code for this step is contained in cells 5 - 10 of the IPython notebook.
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
 
-![alt text][image1]
+![Training class distribution][./training_class_dist.png]   
+![Validation class distribution][./validation_class_dist.png]
+
+Another exploratory visualization is viewing the first three examples of each image, along with class ID and sign name:   
+
+![Sample image visualization][./traffic_sign_viz_1.png]   
+
 
 ###Design and Test a Model Architecture
 
