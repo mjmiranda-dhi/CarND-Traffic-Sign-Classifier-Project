@@ -58,12 +58,12 @@ The code for this step is contained in cells 5 - 10 of the IPython notebook.
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
 
-![Training class distribution][./training_class_dist.png]   
-![Validation class distribution][./validation_class_dist.png]
+![Training class distribution][training_class_dist.png]   
+![Validation class distribution][validation_class_dist.png]
 
 Another exploratory visualization is viewing the first three examples of each image, along with class ID and sign name:   
 
-![Sample image visualization][./traffic_sign_viz_1.png]   
+![Sample image visualization][traffic_sign_viz_1.png]   
 
 
 ###Design and Test a Model Architecture
