@@ -27,6 +27,13 @@ The goals / steps of this project are the following:
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image9]: ./training_class_dist.png "Training Class Dist"
+[image10]: ./validation_class_dist.png "Validation Class Dist"
+[image11]: ./traffic_sign_viz_1.png "Sample Traffic Sign Viz"
+[image12]: ./pre_bw.png "Pre Blackwhite conversion"
+[image13]: ./post_bw.png "Post Blackwhite conversion"
+[image14]: ./post_bw_norm.png "Post Blackwhite Norm"
+
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -38,9 +45,9 @@ The goals / steps of this project are the following:
 
 You're reading it! and here is a link to my [project code](https://github.com/mjmiranda-dhi/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
-###Data Set Summary & Exploration
+### Data Set Summary & Exploration
 
-####1. Provide a basic summary of the data set and identify where in your code the summary was done. 
+#### 1. Basic Summary of Data
 
 The code for this step is contained in the second cell of the IPython notebook.
 
@@ -52,52 +59,112 @@ I used the pandas library as well as plain python to calculate summary statistic
 * The shape of a traffic sign image is (32, 32, 3)
 * The number of unique classes/labels in the data set is 43
 
-####2. Include an exploratory visualization of the dataset and identify where the code is in your code file.
+#### 2. Exploratory Visualization of the Dataset
 
 The code for this step is contained in cells 5 - 10 of the IPython notebook.
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
 
-![Training class distribution][training_class_dist.png]   
-![Validation class distribution][validation_class_dist.png]
+![Training class distribution][image9]   
+![Validation class distribution][image10]
 
 Another exploratory visualization is viewing the first three examples of each image, along with class ID and sign name:   
 
-![Sample image visualization][traffic_sign_viz_1.png]   
+![Sample image visualization][image11]   
 
 
-###Design and Test a Model Architecture
+### Design and Test a Model Architecture
 
-####1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.
+#### 1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.
 
-The code for this step is contained in the fourth code cell of the IPython notebook.
+The code for this step is contained in the 11-17th code cells of the IPython notebook.
 
-As a first step, I decided to convert the images to grayscale because ...
+I decided to convert the images to grayscale because I could not get the network to train properly on 3 channel RGB images. I felt that simplifying the images with grayscale (perceived grayscale luminance based on http://alienryderflex.com/hsp.html) would allow the network to identify shapes/lines better without the added complexities of 3 channels of color. 
 
-Here is an example of a traffic sign image before and after grayscaling.
+Here is an example of a traffic sign image before:
 
-![alt text][image2]
 
-As a last step, I normalized the image data because ...
+![Pre BW][image12]   
+
+and after grayscaling:
+
+![Post BW][image13]  
+
+As a last step, I normalized the image data because it moved all values between -1 and 1. Giving the inputs equal variance and zero mean makes a well conditioned problem, and the optimizer does not have to go very far to do its job. This supposedly makes it easier for the network to learn the images since the pixel values (0-255) aren't as far off as targets.
+
+![Post BW Normalization][image14]   
+  
+After converting to grayscale and normalizing, an additional channel was added back into the images.
 
 ####2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)
 
-The code for splitting the data into training and validation sets is contained in the fifth code cell of the IPython notebook.  
+The training code starts with cell 18 in the IPython notebook. 
 
-To cross validate my model, I randomly split the training data into a training set and validation set. I did this by ...
+The data was pre-split into training, validation and test sets:
+* The size of training set is 34799  
+* The size of the validation set is 4410   
+* The size of test set is 12630  
 
-My final training set had X number of images. My validation set and test set had Y and Z number of images.
+The training data was shuffled prior to training.
 
-The sixth code cell of the IPython notebook contains the code for augmenting the data set. I decided to generate additional data because ... To add more data to the the data set, I used the following techniques because ... 
 
-Here is an example of an original image and an augmented image:
+I attempted to Gaussian blur the images, but did not get good results with the learning. I kept minimum kernal to (1,1), but the network would have trouble and the validation accuracy would start to bounce wildly. I decided against the blurring.
 
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
-
+With the additional images generated from the blur, I originally attempted to augment the dataset by increasing the number of examples for classes with less than 400 total examples. This required many more epochs, but still caused the learning to either get caught up in local minima or bounce back and forth between weights. I also used several learning rates to settle down the bouncing of the error, but again, ultimately decided to go for a simpler dataset.
 
 ####3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+
+The code for the architecture of my network is in 20th cell of the IPython notebook.
+The architecture is similar to the LeNet architecture, which I used as a starting point. I varied between complexity and size. The main changes were starting off with a single channel rather than 3, and ultimately going for deeper layers.
+
+The architecture that ultimately worked was much simpler than the other networks I tried.   
+   
+Convolutional layer 1:     
+* Input:  32x32x1   
+* Filter: 5x5x1   
+* Output: 28x28x12   
+* Activation: ReLu   
+
+Pooling:   
+* Input: 28x28x12    
+* Filter: 2x2    
+* Output: 14x14x12    
+* Padding: VALID   
+* k: 2,2   
+* strides: 2,2   
+   
+Convolutional layer 2:   
+* Input:  14x14x12   
+* Filter: 5x5x12   
+* Output: 10x10x24   
+* Activation: ReLu   
+   
+Pooling:   
+* Input:  10x10x24    
+* Filter: 2x2    
+* Output: 5x5x24   
+* Padding: VALID  
+* k: 2,2  
+* strides: 2,2   
+    
+Transitional Layer: Flattening   
+* Input: 5x5x24   
+* Output: 600  
+    
+Fully Connected layer 3:    
+* Input:  600    
+* Output: 240    
+* Activation: ReLu   
+    
+Fully Connected layer 4:   
+* Input:  240    
+* Output: 120    
+* Activation: ReLu       
+      
+Fully Connected: final layer 5:   
+* Input:  120   
+* Output: 43 (logits)   
+
 
 The code for my final model is located in the seventh cell of the ipython notebook. 
 
