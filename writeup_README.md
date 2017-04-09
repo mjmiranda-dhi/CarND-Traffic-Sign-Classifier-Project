@@ -247,7 +247,7 @@ correct label: 33
 correct label: 26
 
 
-![Ahead Only][image18]
+![Ahead Only][image18]      
 For the first image, the model is relatively sure that this is an ahead only sign (probability of 0.68), and the image does contain an ahead only sign. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
@@ -258,8 +258,7 @@ For the first image, the model is relatively sure that this is an ahead only sig
 | .16	      			| Turn Left Ahead					 			|
 | .14				    | No Passing     								|
 
-
-For the second image ... 
+    
 ![Speed Limit 30][image15]    
 For the second image, the model is relatively sure that this is a speed limit30 sign (probability of 0.75), and the image does contain a speed limit 30 sign. The top five soft max probabilities were
 
@@ -271,7 +270,7 @@ For the second image, the model is relatively sure that this is a speed limit30 
 | .14	      			| Speed Limit 70					 			|
 | .06				    | Speed Limit 80 								|
 
-For the third image ... 
+    
 ![General Caution][image16]    
 For the third image, the model is relatively sure that this is a General Caution sign (probability of 0.80), and the image does contain a General Caution sign. The top five soft max probabilities were
 
@@ -283,8 +282,8 @@ For the third image, the model is relatively sure that this is a General Caution
 | .28	      			| Right of way at next intersection				|
 | .16				    | Road narrows on the right 					|
 
-For the fourth image ... 
-![Right Turn][image17] 
+
+![Right Turn][image17]    
 For the fourth image, the model is relatively sure that this is a General Caution sign (probability of 0.80), and the image does contain a General Caution sign. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
@@ -296,8 +295,8 @@ For the fourth image, the model is relatively sure that this is a General Cautio
 | .07				    | Speed limit 30 								|
 
 
-For the fifth image ... 
-![Traffic Light][image19] 
+
+![Traffic Light][image19]    
 For the fifth image, the model is relatively sure that this is a General Caution sign (probability of 0.58), but the image does not contain a General Caution sign, it contains a traffic signals sign. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
