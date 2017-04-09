@@ -68,7 +68,7 @@ I used the pandas library as well as plain python to calculate summary statistic
 
 The code for this step is contained in cells 3 - 5 of the IPython notebook.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. It is a bar chart showing how the classes are distributed:
 
 ![Training class distribution][image9]   
 ![Validation class distribution][image10]    
