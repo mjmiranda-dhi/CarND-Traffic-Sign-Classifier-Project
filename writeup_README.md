@@ -1,8 +1,8 @@
-#**Traffic Sign Recognition** 
+# **Traffic Sign Recognition** 
 
-##Writeup
+## Writeup
 
-##MJ Miranda
+## MJ Miranda
 
 ---
 
