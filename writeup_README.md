@@ -80,7 +80,6 @@ Another exploratory visualization by viewing the first three examples of each im
 
 ### Design and Test a Model Architecture
 
-####1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.   
 #### 1. Preprocessing image data
 
 The code for this step is contained in the code cells 6-11 of the IPython notebook.
@@ -102,7 +101,6 @@ As a last step, I normalized the image data because it moved all values between 
   
 After converting to grayscale and normalizing, an additional channel was added back into the images.
 
-####2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)
 #### 2. Training, Validation, and Testing data setup
 
 The data setup is contained in the same cells as above, 1-11 in the IPython Notebook.
@@ -118,7 +116,7 @@ I attempted to Gaussian blur the images, but did not get good results with the l
 
 With the additional images generated from the blur, I originally attempted to augment the dataset by increasing the number of examples for classes with less than 400 total examples. This required many more epochs, but still caused the learning to either get caught up in local minima or bounce back and forth between weights. I also used several learning rates to settle down the bouncing of the error, but again, ultimately decided to go for a simpler dataset.
 
-####3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.    
+ 
 #### 3. Model Architecture
 
 The code for the architecture of my network is in 13th cell of the IPython notebook.  
@@ -158,7 +156,6 @@ To train the model, I used an epoch of 30 and batch size of 128. I settled on a 
 
 The optimizer used is the AdamOptimizer, a stochastic optimizer, which users the Adam algorithm (https://arxiv.org/pdf/1412.6980v8.pdf) to control the learning rate. 
 
-####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 #### 5. Training process  
 
 The code for calculating the accuracy of the model is located in the 19th cell of the Ipython notebook.
@@ -182,9 +179,9 @@ An iterative approach to training was used.
 - The accuracy levels on unseen data (eg test data) can prove that the network can generalize well. The validation accuracy being lower than training accuracy shows that maybe the network is memorizing the training data.
 
 
-###Test a Model on New Images
+### Test a Model on New Images
 
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+#### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
 Here are five German traffic signs that I found on the web:
 
@@ -202,7 +199,7 @@ Difficulties:
 
 
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 The code for making predictions on my final model is located in cells 22-26 of the Ipython notebook.
 
@@ -225,7 +222,7 @@ Here are the results of the prediction:
 | Traffic Signals		| General Caution  								|
 
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model is located in the 27th cell of the Ipython notebook.
 
