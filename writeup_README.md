@@ -2,7 +2,7 @@
 
 ## Writeup
 
-## MJ Miranda
+### MJ Miranda
 
 ---
 
@@ -226,83 +226,93 @@ Here are the results of the prediction:
 
 The code for making predictions on my final model is located in the 27th cell of the Ipython notebook.
 
-[ 68.92692566  19.62192917  17.92712021  16.29876328  14.48528671]
+[  1.00000000e+00   3.86466719e-22   7.09685461e-23   1.39277022e-23
+   2.27141572e-24]
 [35 36 25 34  9]
 correct label: 35
 
-[ 75.30936432  30.30484009  28.09903717  14.01213074   6.99199152]
+[  1.00000000e+00   2.84959714e-20   3.13917425e-21   2.39303844e-27
+   2.13865605e-30]
 [1 0 2 4 5]
 correct label: 1
 
-[ 80.12018585  35.97002411  32.28469849  28.91520309  16.46436501]
+[  1.00000000e+00   6.69619960e-20   1.68000978e-21   5.78040858e-23
+   2.26270239e-28]
 [18 27 26 11 24]
 correct label: 18
 
-[ 49.13742065  30.45340157  20.36469269  14.89333248   7.60460186]
+[  1.00000000e+00   7.68481812e-09   3.19273606e-13   1.34270900e-15
+   9.17331719e-19]
 [33 35 39 37  1]
 correct label: 33
 
-[ 58.02287674  34.46298218  14.70181942  13.72396946  13.52715206]
+[  1.00000000e+00   5.86229676e-11   1.53427877e-19   5.77070147e-20
+   4.73972035e-20]
 [18 26 27 24 38]
 correct label: 26
 
+NOTE that the softmax probablities are very small, and the winning prediction tended towards .99 with a very very small probability left for the other predictions. FULL numbers used for probablities:
 
 ![Ahead Only][image18]      
-For the first image, the model is relatively sure that this is an ahead only sign (probability of 0.68), and the image does contain an ahead only sign. The top five soft max probabilities were
+For the first image, the model is sure that this is an ahead only sign (probability of 1.00), and the image does contain an ahead only sign. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .68         			| Straight Ahead  								| 
-| .19     				| Go Straight or Right							|
-| .17					| Road Work										|
-| .16	      			| Turn Left Ahead					 			|
-| .14				    | No Passing     								|
+| 1.00000000e+00		| Straight Ahead  								| 
+| 3.86466719e-22		| Go Straight or Right							|
+| 7.09685461e-23		| Road Work										|
+| 1.39277022e-23		| Turn Left Ahead					 			|
+| 2.27141572e-24	    | No Passing     								|
 
     
 ![Speed Limit 30][image15]    
-For the second image, the model is relatively sure that this is a speed limit30 sign (probability of 0.75), and the image does contain a speed limit 30 sign. The top five soft max probabilities were
+For the second image, the model is sure that this is a speed limit30 sign (probability of 1.0), and the image does contain a speed limit 30 sign. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .75         			| Speed Limit 30 								| 
-| .30     				| Speed Limit 20								|
-| .28					| Speed Limit 50								|
-| .14	      			| Speed Limit 70					 			|
+| 1.00000000e+00		| Speed Limit 30 								| 
+| 2.84959714e-20		| Speed Limit 20								|
+| 3.13917425e-21		| Speed Limit 50								|
+| 2.39303844e-27		| Speed Limit 70					 			|
 | .06				    | Speed Limit 80 								|
 
     
 ![General Caution][image16]    
-For the third image, the model is relatively sure that this is a General Caution sign (probability of 0.80), and the image does contain a General Caution sign. The top five soft max probabilities were
+For the third image, the model is sure that this is a General Caution sign (probability of 1.0), and the image does contain a General Caution sign. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .80         			| General Caution 								| 
-| .35     				| Pedestrians									|
-| .32					| Traffic Signals								|
-| .28	      			| Right of way at next intersection				|
-| .16				    | Road narrows on the right 					|
+| 1.00000000e+00		| General Caution 								| 
+| 6.69619960e-20		| Pedestrians									|
+| 1.68000978e-21		| Traffic Signals								|
+| 5.78040858e-23		| Right of way at next intersection				|
+| 2.26270239e-28	    | Road narrows on the right 					|
 
-
+   
 ![Right Turn][image17]    
-For the fourth image, the model is relatively sure that this is a General Caution sign (probability of 0.80), and the image does contain a General Caution sign. The top five soft max probabilities were
+For the fourth image, the model is sure that this is a General Caution sign (probability of 1.0), and the image does contain a General Caution sign. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .49         			| Turn Right Ahead 								| 
-| .30     				| Ahead Only									|
-| .30					| Keep left										|
-| .14	      			| Go straight or left							|
-| .07				    | Speed limit 30 								|
+| 1.00000000e+00		| Turn Right Ahead 								| 
+| 7.68481812e-09		| Ahead Only									|
+| 3.19273606e-13		| Keep left										|
+| 1.34270900e-15		| Go straight or left							|
+| 9.17331719e-19	    | Speed limit 30 								|
 
 
+[  1.00000000e+00   5.86229676e-11   1.53427877e-19   5.77070147e-20
+   4.73972035e-20]
+[18 26 27 24 38]
+correct label: 26
 
 ![Traffic Light][image19]    
-For the fifth image, the model is relatively sure that this is a General Caution sign (probability of 0.58), but the image does not contain a General Caution sign, it contains a traffic signals sign. The top five soft max probabilities were
+For the fifth image, the model is sure that this is a General Caution sign (probability of 1.0), but the image does NOT contain a General Caution sign, it contains a traffic signals sign. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .58         			| General Caution								| 
-| .34     				| Traffic Signals								|
-| .14					| Pedestrians									|
-| .13	      			| Road narrows on the right						|
-| .13				    | Keep right 									|
+| 1.00000000e+00		| General Caution								| 
+| 5.86229676e-11		| Traffic Signals								|
+| 1.53427877e-19		| Pedestrians									|
+| 5.77070147e-20		| Road narrows on the right						|
+| 4.73972035e-20	    | Keep right 									|
